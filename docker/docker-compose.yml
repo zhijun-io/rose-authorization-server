@@ -1,9 +1,9 @@
 services:
   authorization-server:
-    image: ghcr.io/zhijun-io/rosex-authorization-server:latest
+    image: ghcr.io/zhijun-io/rose-authorization-server:latest
     ports:
       - "9000:9000"
     volumes:
-      - ../samples/config.yml:/config/config.yml:ro
+      - ../configs/config.yml:/config/config.yml:ro
     command:
       - --config=/config/config.yml

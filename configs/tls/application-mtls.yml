@@ -1,0 +1,23 @@
+# Spring Boot mTLS overlay: require a client certificate trusted by client-ca.crt.
+# Generate materials with: ./scripts/generate-tls-certs.sh
+#
+# Example:
+#   java -jar target/rose-authorization-server.jar \
+#     --config=configs/config.yml \
+#     --spring.config.additional-location=optional:file:configs/tls/application-mtls.yml
+
+spring:
+  ssl:
+    bundle:
+      pem:
+        server:
+          keystore:
+            certificate: configs/tls/certs/server.crt
+            private-key: configs/tls/certs/server.key
+          truststore:
+            certificate: configs/tls/certs/client-ca.crt
+
+server:
+  ssl:
+    bundle: server
+    client-auth: NEED

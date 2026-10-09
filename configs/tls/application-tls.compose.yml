@@ -1,4 +1,4 @@
-# Container-path TLS overlay used by compose/docker-compose.tls.yml
+# Container-path TLS overlay used by docker/docker-compose.tls.yml
 spring:
   ssl:
     bundle:

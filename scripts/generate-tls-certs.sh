@@ -3,14 +3,14 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-CERT_DIR="${ROOT}/samples/tls/certs"
+CERT_DIR="${ROOT}/configs/tls/certs"
 mkdir -p "${CERT_DIR}"
 cd "${CERT_DIR}"
 
 DAYS="${TLS_DAYS:-825}"
 SUBJ_SERVER="${TLS_SERVER_SUBJ:-/CN=localhost}"
-SUBJ_CLIENT_CA="${TLS_CLIENT_CA_SUBJ:-/CN=rosex-as-client-ca}"
-SUBJ_CLIENT="${TLS_CLIENT_SUBJ:-/CN=rosex-as-client}"
+SUBJ_CLIENT_CA="${TLS_CLIENT_CA_SUBJ:-/CN=rose-as-client-ca}"
+SUBJ_CLIENT="${TLS_CLIENT_SUBJ:-/CN=rose-as-client}"
 
 echo "==> server certificate (HTTPS)"
 openssl req -x509 -newkey rsa:2048 -nodes \

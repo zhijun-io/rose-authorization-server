@@ -1,4 +1,4 @@
-rosex:
+rose:
   authorization-server:
     users:
       - username: alice
@@ -35,8 +35,8 @@ rosex:
           - profile
         redirect-uris:
           - http://localhost:8080
-          - http://localhost:8080/login/oauth2/code/rosex-authorization-server
-          - http://127.0.0.1:8080/login/oauth2/code/rosex-authorization-server
+          - http://localhost:8080/login/oauth2/code/rose-authorization-server
+          - http://127.0.0.1:8080/login/oauth2/code/rose-authorization-server
         require-authorization-consent: false
         require-proof-key: false
         validate-redirect-uri: false

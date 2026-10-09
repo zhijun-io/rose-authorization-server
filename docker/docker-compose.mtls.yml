@@ -1,0 +1,16 @@
+# mTLS Authorization Server. Generate certs first:
+#   ./scripts/generate-tls-certs.sh
+services:
+  authorization-server:
+    image: ghcr.io/zhijun-io/rose-authorization-server:latest
+    ports:
+      - "9000:9000"
+    volumes:
+      - ../configs/config.yml:/config/config.yml:ro
+      - ../configs/tls/application-mtls.compose.yml:/config/tls.yml:ro
+      - ../configs/tls/certs/server.crt:/certs/server.crt:ro
+      - ../configs/tls/certs/server.key:/certs/server.key:ro
+      - ../configs/tls/certs/client-ca.crt:/certs/client-ca.crt:ro
+    command:
+      - --config=/config/config.yml
+      - --spring.config.additional-location=optional:file:/config/tls.yml
