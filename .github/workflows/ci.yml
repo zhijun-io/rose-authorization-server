@@ -2,12 +2,21 @@ name: CI Build
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   build:
+    if: github.repository_owner == 'zhijun-io'
     uses: zhijun-io/github-workflows/.github/workflows/ci-build.yml@main
     with:
       java-version: '17'
