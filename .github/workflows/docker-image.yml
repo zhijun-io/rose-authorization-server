@@ -1,0 +1,17 @@
+name: CI Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  image:
+    permissions:
+      contents: read
+      packages: write
+    uses: zhijun-io/github-workflows/.github/workflows/docker-image.yml@main
+    with:
+      push: true
+      tags: 'latest,0.1.0'
