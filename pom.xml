@@ -7,18 +7,18 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.1.0</version>
+        <version>4.1.1</version>
         <relativePath/>
     </parent>
 
-    <groupId>io.zhijun.rosex</groupId>
-    <artifactId>rosex-authorization-server-parent</artifactId>
+    <groupId>io.zhijun.rose</groupId>
+    <artifactId>rose-authorization-server</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>rosex-authorization-server-parent</name>
-    <description>Local OIDC Authorization Server for Rosex development and tests</description>
+    <packaging>jar</packaging>
+    <name>rose-authorization-server</name>
+    <description>Local OIDC Authorization Server for rose development and tests</description>
 
-    <url>https://github.com/zhijun-io/rosex-authorization-server</url>
+    <url>https://github.com/zhijun-io/rose-authorization-server</url>
 
     <licenses>
         <license>
@@ -29,40 +29,77 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:https://github.com/zhijun-io/rosex-authorization-server.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/zhijun-io/rosex-authorization-server.git</developerConnection>
-        <url>https://github.com/zhijun-io/rosex-authorization-server</url>
+        <connection>scm:git:https://github.com/zhijun-io/rose-authorization-server.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/zhijun-io/rose-authorization-server.git</developerConnection>
+        <url>https://github.com/zhijun-io/rose-authorization-server</url>
     </scm>
-
-    <modules>
-        <module>rosex-authorization-server</module>
-        <module>rosex-authorization-server-testcontainers</module>
-        <module>rosex-authorization-server-sample</module>
-    </modules>
 
     <properties>
         <java.version>21</java.version>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.testcontainers</groupId>
-                <artifactId>testcontainers-bom</artifactId>
-                <version>${testcontainers.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>io.zhijun.rosex</groupId>
-                <artifactId>rosex-authorization-server</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.zhijun.rosex</groupId>
-                <artifactId>rosex-authorization-server-testcontainers</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security-oauth2-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security-oauth2-resource-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security-oauth2-authorization-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>rose-authorization-server</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>build-info</id>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

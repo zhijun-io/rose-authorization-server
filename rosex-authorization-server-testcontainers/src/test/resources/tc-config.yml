@@ -1,5 +1,0 @@
-rosex:
-  authorization-server:
-    users:
-      - username: alice
-        password: alice
