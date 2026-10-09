@@ -13,7 +13,7 @@
 
     <groupId>io.zhijun.rose</groupId>
     <artifactId>rose-authorization-server</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
     <packaging>jar</packaging>
     <name>rose-authorization-server</name>
     <description>Local OIDC Authorization Server for rose development and tests</description>
