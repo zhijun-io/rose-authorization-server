@@ -10,5 +10,5 @@ jobs:
   build:
     uses: zhijun-io/github-workflows/.github/workflows/ci-build.yml@main
     with:
-      java-version: '21'
+      java-version: '17'
       upload-test-results: false
